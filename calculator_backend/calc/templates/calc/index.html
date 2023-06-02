@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container px-3 py-3 pt-md-4 pb-md-4 mx-auto">
+    <h1 class="display-4 fw-normal pb-4 text-center">Ismertető</h1>
+    <p class="text-justify">
+        Üdvözöllek a Bibó István Szakkollégium Politikatudományi Műhelyének tagjai számára készített oldalon. A honlap
+        célja, hogy elősegítse a féléves szakmai ív könnyebb, átláthatóbb és kiszámíthatóbb tervezését, valamint a
+        lezárult
+        félév tanulmányi teljesítményének megítélését.
+    </p>
+    <h4 class="fw-bold pb-1 pt-4">Hogyan működik a kalkulátor?</h4>
+    <p class="text-justify">
+        Felül, a <a href="{% url 'CalcWizard' %}">Kalkulátor</a> menüpontra kattintva érheted el az
+        űrlapot, melyet kitöltve részletes kimutatást
+        kapsz a büntetőpontjaid jelenlegi állásáról, valamint arról, hogy tanulmányi kötelezettségeid teljesítésének
+        lehetséges elmaradása hogyan érintheti a szakkollégiumi tagságodat.
+    </p>
+    <p class="text-justify">
+        Amennyiben az oldal működésével kapcsolatban hibát fedeznél fel, vagy szeretnél visszajelzést küldeni, kérlek
+        kattints a  <a href="{% url 'contact' %}">Kapcsolat</a> menüpontra.
+    </p>
+    <h4 class="fw-bold pb-1 pt-4">Disclaimer</h4>
+    <p class="text-justify">
+        A kalkulátor a <a href="{% url 'pmtsz' %}">Szabályzat</a> menüpont alatt elérhető dokumentum alapján készült, a kalkulátor pedig a <a
+            target="_blank" href='https://app.diagrams.net/#G1kBm0kg2u4H8dbYJrcFVvw6TEr1YlbqmR'>linken</a> elérhető
+        logikát implementálja. Az oldal egy hobbi projekt béta verzióját reprezentálja, amely a legnagyobb igyekezet
+        ellenére is tartalmazhat hibákat. A kalkuláció eredményei így elsősorban csak tájékoztató jellegűek.
+    </p>
+</div>
+{% endblock content %}

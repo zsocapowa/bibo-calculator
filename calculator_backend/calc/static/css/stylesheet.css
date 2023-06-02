@@ -1,0 +1,96 @@
+h1 {
+  text-align: center;
+}
+thead {
+  width: 49%;
+}
+h1, h3 {
+  margin: 10 10;
+}
+form {
+    margin: 0 auto;
+    width: 500px;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  form li {
+    margin-top: 1em;
+  }
+  label {
+    width: 90px;
+    text-align: right;
+  }
+  input {
+    display: block;
+    font: 1em sans-serif;
+    width: 300px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    position: relative;
+    border-radius: 5px;
+  }
+  .radio_ans {
+    width: 10px;
+    display: inline;
+    float: left;
+  }
+  input:focus {
+    border-color: #000;
+  }
+  .button {
+    padding-left: 90px;
+  }
+  button {
+    margin-left: 0.5em;
+    width: 90px;
+    height: 40px;
+    font-size: medium;
+    margin: 0 auto;
+    display: block;
+  }
+  .plus_btn {
+    /*color: white;
+    background-color: #4CAF50;*/
+    display: inline-block;
+    width: 49%;
+    float: left;
+    height: 30px;
+  }
+  .minus_btn {
+    /* color: white;
+    background-color: rgb(212, 32, 32);*/
+    display: inline-block;
+    width: 49%;
+    float: right;
+    height: 30px;
+  }
+  body {
+    background-color: #F1F4FFFF;
+  }
+  form {
+    background-color: lightblue;
+  }
+  ::placeholder{
+    font-size: small;
+  }
+  table {
+    width: 100%;
+  }
+  legend {
+    background-color: #c6d7eb;
+    padding: 3px 6px;
+    border: 1px solid #1e2761;
+}
+.invalid-feedback {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+

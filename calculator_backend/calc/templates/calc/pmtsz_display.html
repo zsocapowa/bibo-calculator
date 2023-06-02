@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<object data="{% static 'PMTSZ_hatályos.pdf' %}" type="application/pdf" width="100%" height="800px">
+    <p>Úgy tűnik a böngésződ nem tudja megjeleníteni a PDF fájlt, vagy egyéb hiba történt.
+        Semmi gond, a szabályzatod elérheted <a href="{% static 'PMTSZ_hatályos.pdf' %}">erre a linkre kattintva</a>
+    </p>
+</object>
+{% endblock content %}

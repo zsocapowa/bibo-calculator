@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css'%}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <script src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+<h1>Büntetőpont kalkulátor</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    <section>
+        <h3>Féléves teljesítményhez kapcsolódó kérdések</h3>
+        <ul>
+            <li>
+                {{ form.initial_penalty.label }}
+                {{ form.initial_penalty }}
+                {% for error in form.initial_penalty.errors %}
+                <p class="invalid-feedback"><strong>{{ error|escape }}</strong></p>
+                {% endfor %}
+            </li>
+            <li>
+                {{ form.mean.label }}
+                {{ form.mean }}
+                {% for error in form.mean.errors %}
+                <p class="invalid-feedback"><strong>{{ error|escape }}</strong></p>
+                {% endfor %}
+            </li>
+            <li>
+                <fieldset>
+                <legend>{{ form.tdk.label }}</legend>
+                {% for radio in form.tdk %}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                    {{ radio.tag }}
+                    <br>
+                {% endfor %}
+                </fieldset>
+            </li>
+            <li>
+                <fieldset class="wraper">
+                    <legend>Milyen pilléreket teljesítettél?</legend>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th><input type="text" placeholder="pillér megnevezése"></th>
+                            <th>
+                                <select id="pier" name="pier">
+                                    <option selected disabled value=""></option>
+                                    <option value="kurzus">Kurzus</option>
+                                    <option value="kutatócsoport">Kutatócsoport</option>
+                                    <option value="tutori">Tutori dolgozat</option>
+                                    <option value="szakgyak">Szakmai gyakorlat</option>
+                                    <option value="titkár">Műhelytitkár</option>
+                                </select></th>
+                        </tr>
+                        <tr>
+                            <th><input type="text" placeholder="pillér megnevezése"></th>
+                            <th>
+                                <select id="pier2" name="pier">
+                                    <option selected disabled value=""></option>
+                                    <option value="kurzus">Kurzus</option>
+                                    <option value="kutatócsoport">Kutatócsoport</option>
+                                    <option value="tutori">Tutori dolgozat</option>
+                                    <option value="szakgyak">Szakmai gyakorlat</option>
+                                    <option value="titkár">Műhelytitkár</option>
+                                </select>
+                            </th>
+                        </tbody>
+                    </table>
+                    <button type="button" class="plus_btn">+</button>
+                    <button type="button" class="minus_btn">-</button>
+                </fieldset>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <h3>Képzéshez kapcsolódó kötelezettségek</h3>
+        <ul>
+            <li>
+                <fieldset>
+                <legend>{{ form.ba_ma.label }}</legend>
+                {% for radio in form.ba_ma %}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                    {{ radio.tag }}
+                    <br>
+                {% endfor %}
+                </fieldset>
+            </li>
+            <li>
+                <fieldset>
+                <legend>{{ form.last_semester.label }}</legend>
+                {% for radio in form.last_semester %}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                    {{ radio.tag }}
+                    <br>
+                {% endfor %}
+                </fieldset>
+            </li>
+            <li>
+                <fieldset>
+                <legend>{{ form.previous_internship.label }}</legend>
+                {% for radio in form.previous_internship %}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                    {{ radio.tag }}
+                    <br>
+                {% endfor %}
+                </fieldset>
+            </li>
+            <li>
+                <fieldset>
+                <legend>{{ form.previous_paper.label }}</legend>
+                {% for radio in form.previous_paper %}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                    {{ radio.tag }}
+                    <br>
+                {% endfor %}
+                </fieldset>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <h3>Egyéb kérdések</h3>
+        <ul>
+            <li>
+                <fieldset>
+                <legend>{{ form.package.label }}</legend>
+                {% for radio in form.package %}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                    {{ radio.tag }}
+                    <br>
+                {% endfor %}
+                </fieldset>
+            </li>
+            <li>
+                <fieldset>
+                <legend>{{ form.assembly.label }}</legend>
+                {% for radio in form.assembly %}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                    {{ radio.tag }}
+                    <br>
+                {% endfor %}
+                </fieldset>
+            </li>
+            <li>
+                <fieldset>
+                <legend>{{ form.prof_day.label }}</legend>
+                {% for radio in form.prof_day %}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                    {{ radio.tag }}
+                    <br>
+                {% endfor %}
+                </fieldset>
+            </li>
+            <li>
+                <fieldset>
+                <legend>{{ form.on_time.label }}</legend>
+                {% for radio in form.on_time %}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                    {{ radio.tag }}
+                    <br>
+                {% endfor %}
+                </fieldset>
+            </li>
+            <li>
+                <fieldset>
+                <legend>{{ form.passive_limit.label }}</legend>
+                {% for radio in form.passive_limit %}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                    {{ radio.tag }}
+                    <br>
+                {% endfor %}
+                </fieldset>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <br>
+        <button type="submit">Küldés</button>
+    </section>
+</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+certifi==2020.6.20
+Django==2.2.5
+django-crispy-forms==1.14.0
+django-filter==21.1
+django-formtools==2.3
+django-formwizard==1.0
+django-mathfilters==1.0.0
+djangorestframework==3.13.1
+importlib-metadata==4.11.0
+Markdown==3.3.6
+packaging==20.4
+pluggy==0.13.1
+psycopg2==2.8.4
+pyparsing==2.4.7
+pytz==2020.1
+six==1.15.0
+zipp==3.7.0

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal pb-4">Kapcsolat</h1>
+    <p class="lead">Amennyiben szeretnél visszajelzést küldeni, vagy kérdésed van, <br>kérlek töltsd ki az alábbi
+        űrlapot.</p>
+</div>
+<div class="modal-dialog" style="pointer-events: auto;">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+                {{ form.last_name }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+                {{ form.first_name }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.mail.id_for_label }}">{{ form.mail.label }}</label>
+            {{ form.mail }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+            {{ form.message }}
+        </div>
+        <button type="submit" class="btn btn-primary">Küldés</button>
+    </form>
+</div>
+{% endblock content %}

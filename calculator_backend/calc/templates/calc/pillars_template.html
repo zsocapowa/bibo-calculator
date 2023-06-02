@@ -1,0 +1,38 @@
+<div class="form-group pt-2 pb-2">
+    <p>Az alábbi pillérek közül mit és mennyit teljesítettél?</p>
+    {% for field in form %}
+    {% if field.field.widget.input_type == "number" %}
+    <div class="form-row align-items-center">
+        <div class="form-group col-md-4">
+            <label for="{{ field.id_for_label }}" style="margin-bottom:0rem !important;">
+                {{ field.label }}</label>
+        </div>
+        <div class="form-group col-md-8">
+            {{ field }}
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+<div class="form-group pt-2 pb-2">
+    {{ form.other_pillars.label_tag }}
+    {% for f in form.other_pillars %}
+    <div class="form-check">
+        {{ f.tag }}
+        <label for="{{ f.id_for_label }}" class="form-check-label">{{ f.choice_label }}</label>
+    </div>
+    {% endfor %}
+</div>
+{% for field in form %}
+{% if field.field.widget.input_type == "radio" %}
+<div class="form-group pt-2 pb-2">
+    <label>{{ field.label }}</label>
+    {% for radio in field %}
+    <div class="form-check">
+        {{ radio.tag }}
+        <label for="{{ radio.id_for_label }}" class="form-check-label">{{ radio.choice_label }}</label>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endfor %}

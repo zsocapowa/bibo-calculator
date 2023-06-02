@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="modal-dialog">
+    <div class="modal-content rounded-5 shadow">
+        <div class="modal-header pt-5 pl-5 pr-5 border-bottom-0" style="display:block !important;">
+            <h2 class="modal-title fw-bold mb-3 text-center">Büntetőpont Kalkulátor</h2>
+            <div class="progress mb-3">
+                <div class="progress-bar" role="progressbar"
+                     aria-valuenow="{% widthratio wizard.steps.step1 wizard.steps.count 1 %}"
+                     aria-valuemin="0" aria-valuemax="100"
+                     style="width: {% widthratio wizard.steps.step1 wizard.steps.count 100 %}%;">
+                </div>
+            </div>
+            <div class="text-center">Lépések - {{ wizard.steps.step1 }}/{{ wizard.steps.count }}</div>
+        </div>
+        <div class="modal-body pt-2 pl-5 pr-5 pb-5">
+            <hr class="my-4">
+            <form action="" method="post" class="form-register">{% csrf_token %}
+                <div class="form-floating mb-3">
+                    {{ wizard.management_form }}
+                    {% if wizard.form.forms %}
+                    {{ wizard.form.management_form }}
+                    {% for form in wizard.form.forms %}
+                    {% for field in form %}
+                    {% if field.field.widget.input_type == "radio" %}
+                    <div class="form-group pt-2 pb-2">
+                        <label>{{ field.label }}</label>
+                        {% for radio in field %}
+                        <div class="form-check">
+                            {{ radio.tag }}
+                            <label for="{{ radio.id_for_label }}" class="form-check-label">{{ radio.choice_label
+                                }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="form-group pt-2 pb-2">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                    {% else %}
+                    {% if wizard.steps.step1 == 2 %}
+                    {% include "calc/pillars_template.html" %}
+                    {% else %}
+                        {% for field in wizard.form %}
+                        {% if field.field.widget.input_type == "radio" %}
+                        <div class="form-group pt-2 pb-2">
+                            <label>{{ field.label }}</label>
+                            {% for radio in field %}
+                            <div class="form-check">
+                                {{ radio.tag }}
+                                <label for="{{ radio.id_for_label }}" class="form-check-label">{{ radio.choice_label }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="form-group pt-2 pb-2">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% endif %}
+                </div>
+                <hr class="my-4">
+                {% if wizard.steps.prev %}
+                <input class="w-100 mb-2 btn btn-primary rounded-4" type="submit" value="Következő"/>
+                <button class="w-100 mb-2 btn btn-secondary rounded-4" formnovalidate="formnovalidate"
+                        name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Előző
+                </button>
+                <button class="w-100 mb-2 btn btn-outline-primary rounded-4" formnovalidate="formnovalidate"
+                        name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">Első
+                </button>
+                {% else %}
+                <input class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit" value="Következő"/>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+     </div>
+    {% endblock content %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal pb-4 text-center">Eredmények összegzése</h1>
+</div>
+<div class="container">
+    <div class="card-deck mt-4">
+        <div class="card text-center">
+            <div class="card-block">
+                <h5 class="card-header font-weight-bold" style="background-color: lightblue;">
+                    Büntetőpontjaid száma:
+                </h5>
+                <div class="card-body">
+                    <h3 class="card-title">{{ form_data.score.total }}</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            {% for key, value in form_data.score.items %}
+                            {% if not forloop.first %}
+                            <tr>
+                                <td>{{ key }}</td>
+                                <td>{{ value }}</td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-deck mt-4">
+        <div class="card text-center">
+            <div class="card-block">
+                <h5 class="card-header font-weight-bold" style="background-color: lightblue;">
+                    Kiesés a kollégiumból?:
+                </h5>
+                <div class="card-body">
+                    <h3 class="card-title">{{ form_data.failure.overall|yesno:"Igen,Nem" }}</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            {% for key, value in form_data.failure.items %}
+                            {% if not forloop.first %}
+                            <tr>
+                                <td>{{ key }}</td>
+                                <td>
+                                    {% if value %}
+                                    <i class="fa fa-check text-success"></i>
+                                    {% else %}
+                                    <i class="fa fa-times text-danger"></i>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-3">Köszönöm!</h1>
+  <p class="lead">Megkaptuk az üzeneted, amennyiben megadtad az e-mail címed hamarosan visszajelzünk!</p>
+  <hr>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'index' %}" role="button">Visszatérés az ismertető oldalra</a>
+  </p>
+</div>
+{% endblock content %}
